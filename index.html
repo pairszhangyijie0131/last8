@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding:0;
+        }
+        /*导航栏*/
+        .navigation p{
+            font:15px;
+            color:white;
+        }
+        .navigation{
+            background-color: black;
+            width:1500px;
+            height:60px;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        /*第一部分*/
+        .before{
+            width:600px;
+            display:flex;
+            flex-direction: row; 
+            align-items: center;
+            justify-content: space-around;
+        }
+        .before>p{
+            
+            font-size: 20px;
+        }
+        .before p:nth-of-type(1){
+            color:yellow;
+        }
+        .music-picture{
+            display:flex;
+            flex-direction: row;
+            padding-left: 20px;
+        }
+        /*第二部分*/
+        .center{
+            display:flex;
+            flex-direction: row;
+            width:500px;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .part{
+            display:flex;
+            flex-direction: row;
+        }
+        .star{
+            width: 30px;
+            height:30px;
+            overflow: hidden;
+            background:url(./images/3.jpg)  -220px -17px;
+            margin:auto 0; 
+        }
+        .bright{
+            font:17px bolder;
+        }
+        /*第三部分*/
+        .behind{
+            width:300px;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:center;   
+        }
+        .trangle{
+            font-size:20px;
+            font-weight: bolder;
+            margin-right: 10px;
+        }
+        .text{
+            width:180px;
+            height:25px;
+            position:relative;
+            background: url(./images/5.jpg) no-repeat center center;
+            color:rgb(187, 187, 186);
+            padding-left: 25px;
+        }
+
+
+        /*中间部分*/
+        .music{
+            display:flex;
+            padding-top: 60px;
+            justify-content: space-between;
+        }
+        /*歌词*/
+        .song{
+            width:700px;
+            height:700px;
+            padding-left: 50px;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            text-align: center;
+        }
+        .song p{
+            text-align: center;
+        }
+        .lyric{
+            overflow-y:scroll;
+        }
+        .introduce{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            /*padding-left:260px;*/
+        }
+        .introduce>p{
+            display:inline-block;
+        }
+        .introduce>p:nth-child(even){
+            color:rgb(230, 230, 64);
+        }
+        .yellow{
+            color:rgb(230, 230, 64);
+        }
+        .dialog{
+            width:15px;
+            height:15px;
+            background:url(./images/2.jpg) no-repeat;
+            justify-content:center;
+            align-items: center;
+        }
+      
+        /*图片*/
+        .broadcast{
+            width:600px;
+            height:700px;
+            padding-left: 100px;
+        }
+        @keyframes animation1{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .sheep{
+            width:300px;
+            height:300px;
+            animation:animation1 5s linear infinite;
+        }
+        .picture{
+            border-radius: 50%;
+            width:300px;
+            /*padding-left: 50px;*/
+            overflow: hidden;
+            margin:auto 0;
+        }
+        /*播放进度*/
+        .progress{
+            width: 800px;
+            height:60px;
+            /*background-color: rgb(214, 209, 209);*/
+            display:inline-flex;
+            padding-left: -10px;
+            padding-top: 50px;
+            /*justify-content:space-between;*/
+
+        }
+        /*播放暂停键*/
+        .broad{
+            width: 45px;
+            height:45px;
+            border-radius: 50%;
+            overflow: hidden;
+            background:url(./images/7.jpg)  170px 0px;
+            
+            
+            /*background-size: 100%;
+            background-clip: 127px 110px;*/
+        }
+        /*进度条*/
+        .musicprogress{
+            width:220px;
+            height:50px;
+            display: inline-flex;
+            padding-left:20px;
+            align-items: center;
+        }
+        .slipbox{
+            width:220px;
+            height:5px;
+            background-color:rgb(163, 161, 161);
+            border-radius: 10%;
+
+        }
+        .slip{
+            width:10px;
+            height:6px;
+            background-color:rgb(247, 176, 46);
+            border-radius: 10%;
+            margin-left:-220px
+        }
+        .circle{
+            width:10px;
+            height:10px;
+            background-color: indianred;
+            border-radius: 50%;
+            position:absolute;
+            margin-top: -2px;
+            margin-left:0px;
+        }
+        /*时间*/
+        .recentTime{
+            padding-left:20px;
+        }
+        /*音量*/
+        .volume{
+            width:50px;
+            height:50px;
+            /*padding-left: 20px;*/
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .volumepicture{
+            width:30px;
+            height:30px;
+            background:url(./images/7.jpg) no-repeat -38px 10px; 
+           
+        }
+        
+        .download{
+            width:300px;
+            height:100px;
+            display:inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bluebackground{
+            width:200px;
+            height:88px;
+            background:url(./images/7.jpg) no-repeat 0px -44px ;
+            
+            display:inline-flex;
+            justify-content: space-around;
+        }
+        .downloadpicture{
+            width:30px;
+            height:23px;
+            background: url(./images/7.jpg)  no-repeat 11px 5px;
+            padding-top:0px;
+        }
+        .letter{
+            padding-left: -20px;
+        }
+       
+        /*评论区*/
+        input{
+            border:1px solid rgb(187, 186, 186)
+            
+        }
+        .share{
+            width:600px;
+            height:150px;
+        }
+        .commit{
+            width:800px;
+            height:800px;
+            padding-left: 400px;
+            padding-top:150px;
+            margin: auto 0;
+        }
+        .first-line{
+            display: inline-flex;
+            width:200px;
+            height:50px;
+        }
+        .second-line{
+            display:flex;
+        }
+        .facebox{
+            width:90px;
+            height: 90px;
+            position:0px 0px;
+        }
+        .face{
+            width:80px;
+            height:80px; 
+        }
+        .third-line{
+            display:flex;
+        }
+        .smileface{
+            width:50px;
+            height: 50px;
+            margin-left: 100px;
+        }
+        .smile{
+            width:50px;
+            height:50px;
+            
+        }
+        .current_letter{
+            display: inline-flex;
+            padding-left: 400px;
+        }
+        
+        .button{
+            width:50px;
+            height:50px;
+            background-color: rgb(226, 226, 79);
+            border:rgb(226, 226, 79);
+        }
+        
+        .paging{
+            width:200px;
+            height: 60px;
+            padding-left:250px;
+            display:inline-flex;
+            justify-content: space-around;
+        }
+        .paging>div{
+            width:30px;
+            height:30px;
+            border-radius: 50%;
+            background:rgb(165, 164, 164);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left:10px;
+            
+        }
+        .example{
+            position:relative;
+        }
+        .myface{
+            width:100px;
+            height:100px;
+            background-size:contain;
+            background: url(./images/6.jpg) no-repeat;
+        }
+        .first{
+            width:800px;
+            height:100px;
+            display:inline-flex;
+            opacity: 0;
+            position:absolute;
+        }
+        .second{
+            display:inline-flex;
+            position:absolute;
+            
+        }
+        .third{
+            display:inline-flex;
+            position:absolute;
+            top:100px;
+        }
+        .top{
+            display:inline-flex;
+            justify-content: space-around;
+        }
+        .name{
+            width:100px;
+        }
+        .top>div:nth-child(2){
+            margin-left:550px;
+            font-size:10px;
+        }
+        .bottom{
+            display:inline-flex;
+            margin-top:10px;
+            font-size:10px;
+        }
+        .mycommit{
+            width:700px;
+            height:50px;
+        }
+        .information{
+            width:700px;
+            height:100px;
+        }
+        .myface{
+            width:100px;
+            height:100px;
+        }
+        .divide{
+            width:800px;
+            height:1px;
+            background-color: rgb(95, 93, 93);
+            position:absolute;
+        }
+        .divide2{
+            top:100px;
+        }
+        .divide3{
+            top:100px;
+        }
+        .divide4{
+            top:100px;
+        }
+        .paging{
+            margin-top:350px;
+        }
+        .paging>p{
+            width:20px;
+            height: 20px;
+            position:absolute;
+        }
+        .committime{
+            width:300px;
+        }
+        .bottom>div:nth-child(2){
+            margin-left:300px;
+        }
+        .bottom>div:nth-child(3){
+            margin-left:10px;
+        }
+        .divideline{
+            width:500px;
+            height:1px;
+            background-color:black;
+        }
+        
+    </style>
+</head>
+<body>
+    <!--导航栏-->
+    <div class="navigation">
+        <div class="before">
+            <div class="music-picture">
+                <img src="images/4.jpg" >
+            </div>
+            <p>首页</p>
+            <p>榜单</p>
+            <p>歌手</p>
+            <p>下载酷我客户端</p>
+        </div>
+
+        <div class="center">
+            <div class="part"><span class="star"></span><p style="color:rgb(187, 187, 186)">美女秀</p></div>
+            <div class="part"><span class="star"></span><p style="color:rgb(187, 187, 186)">酷我耳机</p></div>
+            <div class="part"><span class="star"></span><p style="color:rgb(187, 187, 186)">VIP会员</p></div>
+            <div class="part"><span class="star"></span><p style="color:rgb(187, 187, 186)">i听</p></div>
+            <div class="part"><p class="bright">更多服务</p></div>
+            <div class="part"><p class="bright">登录</p></div>
+        </div>
+
+        <div class="behind">
+            <p class="trangle">^</p>
+            <div class="search">
+                <p class="text">找到好音乐</p>
+            </div>
+        </div>
+
+    </div>
+    <!--中间部分-->
+    <div class="music">
+        <div class="song">
+            <p class="title">喜羊羊</p>
+            <div class="introduce">
+                <p>专辑:&nbsp</p>
+                <p>儿歌大全&nbsp</p>  
+                <p> 歌手:&nbsp</p>
+                <p > 华语群星&nbsp</p> 
+                <p>分享&nbsp&nbsp&nbsp</p>
+                <span class="dialog"></span>
+                <p class="yellow">&nbsp评论</p>
+            </div>
+            <p clss="time">上传时间：2015-10-02 歌曲来源：民大相思湖网球社</p>
+            <hr/>
+            <ul class="lyric">
+                <li>喜羊羊美羊羊懒羊羊沸羊羊</li>
+                <li>慢羊羊软绵绵红太狼灰太狼</li>
+                <li>别看我只是一只羊  </li>
+                <li>绿草也为我变的更香</li>
+                <li>天空因为我变的更蓝</li>
+                <li>白云也为我变的柔软</li>
+                <li>别看我只是一只羊</li>
+                <li>羊儿的聪明难以想像</li>
+                <li>天再高心情一样奔放 </li>
+                <li> 每天都追赶太阳... </li>
+                <li>有什么难题去牵绊我都不会去心伤</li>   
+                <li>有什么危险在我面前也不会去慌乱  </li>  
+                <li>就算有狼群把我追捕也当做游戏一场  </li>      
+                <li>在什么时间都爱开心笑容都会飞翔  </li>      
+                <li>就算会摔倒站得起来永远不会沮丧</li>        
+                <li>在所有天气拥有叫人大笑的力量</li>        
+                <li>虽然我只是羊… …   </li>        
+                <li>喜羊羊美羊羊懒羊羊沸羊羊 </li>         
+                <li>慢羊羊软绵绵红太狼灰太狼 </li>          
+                <li>别看我只是一只羊   </li>       
+                <li>羊儿的聪明难以想像  </li>         
+                <li>天再高心情一样奔放  </li>          
+                <li>每天都追赶太阳..  </li>       
+                <li>有什么难题 去牵绊我 都不会去心伤</li>           
+                <li>有什么危险 在我面前 也不会去慌乱</li>            
+                <li>就算有狼群 把我追捕 也当做游戏一场</li>            
+                <li>在什么时间 都爱开心 笑容都会飞翔</li>           
+                <li>就算会摔倒站得起来永远不会沮丧 </li>         
+                <li>在所有天气拥有叫人大笑的力量 </li>           
+                <li>虽然我只是羊… …</li>
+                <li>有什么难题去牵绊我都不会去心伤</li>
+                <li>有什么危险在我面前也不会去慌乱</li>
+                <li>就算有狼群把我追捕也当做游戏一场 </li>          
+                <li>在什么时间都爱开心笑容都会飞翔</li>           
+                <li>就算会摔倒站得起来永远不会沮丧   </li>        
+                <li>在所有天气拥有叫人大笑的力量 </li>          
+                <li>虽然我只是羊</li>
+                <li>虽然我只是羊</li>
+            
+            </ul>
+        </div>
+        <div class="broadcast">
+            <div class="sheep"><img class="picture" src="./images/1.jpg"></div>
+            <div class="progress">
+                <span class="broad"></span>
+                <!--
+                <audio  autoplay="true" id="myaudio">
+                    <source src="./夏天.mp3"></source>
+                </audio>-->
+                <div class="musicprogress">
+                    <div class="slipbox">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="slip"></div>
+                    <!--<div class="circlebox"><span class="circle"></span></div>-->
+                </div>
+                <p class="recentTime">000</p>
+                <div class="volume">
+                    <div><p class="volumepicture"></p></div>
+                </div>
+            </div>
+            <div class="download">
+                <div class="bluebackground">
+                    <p class="downloadpicture"></p>
+                    <p class="letter">免费下载这首歌</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio  autoplay="true" id="myaudio">
+        <source src="./夏天.mp3"></source>
+    </audio>
+    <!--评论部分-->
+    <div class="commit">
+        <div class="first-line">
+            <p>评论 &nbsp;</p>
+            <p>1703条评论</p>
+        </div>
+        <hr/>
+        <div class="second-line">
+            <div class="facebox">
+                <img class="face" src="./images/1.jpg">
+            </div>
+            <textarea class="share">分享你的音乐见解</textarea>
+        </div>
+        
+        <div class="third-line">
+            <div class="smileface">
+                <img class="smile" src="images/8.jpg">
+            </div>
+            <div class="current_letter">
+                <p>已输入</p>
+                <p class="num">0</p>
+                <p>字 &nbsp;</p>
+            </div>
+            <input type=button value="评论" class="button">
+        </div>
+        <div class="commitexample">
+            <p>精彩评论</p>
+            <div class="example">
+                <!--<div class="first">
+                    <div class="myface"></div>
+                    <div class="information">
+                        <div class="top">
+                            <div class="name">姓名</div>
+                            <div>分享</div>
+                        </div>
+                        <div class="mycommit"></div>
+                        <div class="bottom">
+                            <div class="committime"></div>
+                            <div>149</div>
+                            <div>回复</div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="divide" id="divide1"></div>
+                <div class="second">
+                    <div class="myface"></div>
+                    <div class="information">
+                        <div class="top">
+                            <div class="name">forget</div>
+                            <div>分享</div>
+                        </div>
+                        <div class="mycommit">
+                            <div>我喜欢很多歌曲，喜欢过很多唱歌的人，哪些有时不是我的爱好，已经成为我那段青春的回忆，我现在可以很骄傲</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="committime"> 2017-06-03 16:58:02</div>
+                            <div>149</div>
+                            <div>回复</div>
+                        </div>
+                    </div>
+                    <div class="divide" id="divide1"></div>
+                </div>
+                <div class="third">
+                    <div class="myface"></div>
+                    <div class="information">
+                        <div class="top">
+                            <div class="name">亚里士多德</div>
+                            <div>分享</div>
+                        </div>
+                        <div class="mycommit">
+                            <div>学校晚会表演这歌</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="committime">2017-05-14 16:16:53</div>
+                            <div>106</div>
+                            <div>回复</div>
+                        </div>
+                    </div>
+                    <div class="divide" id="divide1"></div>
+                </div>
+                <div class="divide" id="divide1"></div>
+                <div class="first">
+                    <div class="myface1"></div>
+                    <div class="information">
+                        <div class="top">
+                            <div class="name">刘一丹</div>
+                            <div>分享</div>
+                        </div>
+                        <div class="mycommit1"></div>
+                        <div class="bottom">
+                            <div class="committime1"></div>
+                            <div>149</div>
+                            <div>回复</div>
+                        </div>
+                    </div>
+                    <div class="divide" id="divide1"></div>
+                </div>
+            </div>
+
+            <div class="divideline"></div>
+            <div class="paging">
+                <div><p><</p></div>
+                <div><p>1</p></div>
+                <div><p>2</p></div>
+                <div><p>3</p></div>
+                <div><p>…</p></div>
+                <div><p>17</p></div>
+                <div><p>></p></div>
+            </div>
+        </div>
+
+        
+    </div>
+    <script>
+        var myaudio = document.getElementById("myaudio");
+        var broad=document.getElementsByClassName("broad")[0];
+        var recentTime=document.getElementsByClassName("recentTime")[0];
+        var circle=document.getElementsByClassName("circle")[0];
+        var slip=document.getElementsByClassName("slip")[0];
+        var volumepicture=document.getElementsByClassName("volumepicture")[0];
+        var volume=document.getElementsByClassName("volume")[0];
+        var slipbox=document.getElementsByClassName("slipbox")[0];
+        var slip=document.getElementsByClassName("slip")[0];
+        var circle=document.getElementsByClassName("circle")[0];
+        var recentTime=document.getElementsByClassName("recentTime")[0];
+        var slip=document.getElementsByClassName("slip")[0];
+        var share=document.getElementsByClassName("share")[0];
+        var first=document.getElementsByClassName("first")[0];
+        var myface=document.getElementsByClassName("myface")[0];
+        var information=document.getElementsByClassName("information")[0];
+        var top=document.getElementsByClassName("top")[0];
+        var name=document.getElementsByClassName("name")[0];
+        var commit=document.getElementsByClassName("commit")[0];
+        var bottom=document.getElementsByClassName("bottom")[0];
+        var committime1=document.getElementsByClassName("committime1")[0];
+        var button=document.getElementsByClassName("button")[0];
+        var mycommit1=document.getElementsByClassName("mycommit1")[0];
+        var smileface=document.getElementsByClassName("smileface")[0];
+        var face=document.getElementsByClassName("face")[0];
+        var num=document.getElementsByClassName("num")[0];
+        var third_line=document.getElementsByClassName("third-line")[0];
+        var example=document.getElementsByClassName("example")[0];
+        var second=document.getElementsByClassName("second")[0];
+        var third=document.getElementsByClassName("third")[0];
+        var myface1=document.getElementsByClassName("myface1")[0];
+        var divide=document.getElementsByClassName("divide")[0];
+        var divide1=document.getElementById("divide1");
+        var divide2=document.getElementById("divide2");
+        var divide3=document.getElementById("divide3");
+        var divide4=document.getElementById("divide4");
+        
+        
+        function playOrpause(){
+            if(myaudio.played){
+                broad.idName="zan";
+            }
+            else{
+                broad.idName="play";
+            }
+        }
+        window.onload=playOrpause; 
+        broad.onclick=function(){
+            if(myaudio.paused){
+                broad.idName="zan";
+                myaudio.play();
+                broad.style.background="url(./images/7.jpg)  71px 0px";
+                curTime();
+                time_process();
+            }
+            else{
+                myaudio.pause();
+                broad.idName="play";
+                broad.style.background="url(./images/7.jpg)  170px 0px";
+            }
+        }
+        volume.onclick=function(){
+            if(myaudio.volume>0){
+                myaudio.volume=0;
+            }else{
+                myaudio.volume=1;
+            }
+        }
+
+        function time_process(){
+            var music_length=myaudio.duration;
+            var timer=setInterval(function(){
+                var current =myaudio.currentTime;
+                slip.style.width=""+parseFloat(current/music_length)*147+ "px";
+                circle.style.marginLeft=""+parseFloat(current/music_length)*147 + "px";
+            },100);
+        }
+        function time(){
+            var current=timeFormate(myaudio.currentTime);
+            var music_length =timeFormate(myaudio.duration);
+            recentTime.innerHTML=current;
+        }
+        function curTime(){
+            timer=setInterval(function(){ time();},1000);
+        }
+    
+        function timeFormate(number){
+            var minute = parseInt(number / 60);
+            var second = parseInt(number % 60);
+            minute = minute >= 10 ? minute : "0" + minute;
+            second = second >= 10 ? second : "0" + second;
+            return minute + ":" + second;
+        }
+        curTime();
+
+        /*function commit(){
+            if(share.innerHtml==""){
+                alert("请输入评论");
+            }else{
+                text=share.innerHTML;
+            
+                var divnew=document.createElement("div");
+                var divface=document.createElement("div");
+                var divinformation=document.createElement("div");
+                var divtop=document.createElement("div");
+                var divname=document.createElement("div");
+                var divshare=document.createElement("div");
+                var divcommit=document.createElement("div");
+                var divbottom=document.createElement("div");
+                var divcommittime=document.createElement("div");
+                var divlike=document.createElement("div");
+                var divrecieve=document.createElement("div");
+                var divdivide=document.createElement("div");
+
+                divnew.nextSibling(divdivide);
+                divdivide.className=divide;
+                divnew.appendChild(divface);
+                divnew.appendChild(divinformatin);
+                divinformation.appendChild(divtop);
+                divinformation.appendChild(divmycommit);
+                divinformation.appendChild(divbottom);
+                divtop.appendChild(divname);
+                divtop.appendChild(divshare);
+                divbottom.appendChild(divcommittime);
+                divbottom.appendChild(divlike);
+                divbottom.appendChild(divrecieve);
+
+                divnew.setAttribute(width,800);
+                divnew.setAttribute(height,100);
+                divface.className=myface;
+                divinformation.className=information;
+                divtop.className=top;
+                divname.className=name;
+                divshare.setAttribute(marginLeft,550)
+                divshare.setAttribute(fontSize,10)
+                divrecieve.setAttribute(marginLeft,100);
+                divrecieve.setAttribute(fontSize,10);
+                divmycommit.className=mycommit;
+                divcommit.value=text;
+                divcommittime.className=committime;
+                divcommittime.innerHTML=getnowTime();
+                divcommittime.setAttribute(fontSize,10);
+                divbottom.className=bottom;
+                divlike.setAttribute(marginLeft,300)
+                divlike.setAttribute(fontSize,10);
+                divlike.innerHTML=0;
+                
+                }
+            }
+            
+        */
+        if(share.innerHTML!==0){
+            var sum;
+            for(var i=0;i<share.innerHTML.length;i++){
+                if(share.innerHTML[i]!==""){
+                    sum=sum++;
+                }else{
+                    sum=0;
+                }
+
+            }
+            num.innerHTML=sum;
+        }else{
+            num.innerHTML=0;
+        }
+        third_line.onclick=function comit(){
+            if(share.value==""){
+                alert("请输入评论");
+            }else{
+                first.style.opacity="1";
+                example.style.first="first";
+                mycommit1.innerHTML=share.value;
+                myface1.style.width="100px"
+                myface1.style.height="100px"
+                myface1.style.background="url(./images/1.jpg)  no-repeat";
+                first.style.position="absulote";
+                first.style.top="0px";
+                second.style.top="110px";
+                third.style.top="220px";
+                /*divide1.style.top="100px";
+                divide2.style.top="110px";
+                divide1.style.top="220px";
+                divide2.style.top="400px";
+                */
+                /*时间*/
+                var myDate=new Date();
+                nowTime1=myDate.toLocaleString();
+                nowTime2=nowTime1.replaceAll("/","-");
+                nowTime2=nowTime2.replace("上午", " ");
+                nowTime2=nowTime2.replace("下午", " ");
+                committime1.innerHTML=nowTime2;
+                /*本地存储*/
+                if(window.localStorage){
+                    localStorage.setItem('评论',share.value)
+                    localStorage.setItem('时间',nowTime2)
+                }
+
+            }
+        }
+        
+        function getnowTime(){
+            var myDate=new Date();
+            nowTime1=myDate.toLocaleString();
+            nowTime2=nowTime1.replaceAll("/","-");
+            nowTime2=nowTime2.replace("上午", " ");
+            nowTime2=nowTime2.replace("下午", " ");
+            console.log(nowTime2)
+        }
+    </script>
+</body>
+</html>
